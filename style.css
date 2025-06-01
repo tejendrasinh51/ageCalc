@@ -123,6 +123,8 @@ button{
     }
     #result h3 {
         font-size: 24px;
+        display: flex;
+        justify-content: center;
     }
     
 }

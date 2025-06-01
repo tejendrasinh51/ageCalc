@@ -53,7 +53,10 @@ form.addEventListener('submit', function (event) {
     }
 
     resultele.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 180px; gap:10px">
         <h3>Your age is:</h3>
         <p>${years} years, ${months} months, ${days} days, ${hours} hours, and ${minutes} minutes</p>
+        </div>
+
     `;
 });
