@@ -85,3 +85,28 @@ button{
 #btn:hover {
     background-color: #000000;
 }
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        height: 80%;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    #labeldob {
+        font-size: 20px;
+    }
+    #birthdate {
+        width: 200px;
+        font-size: 16px;
+    }
+    button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    #result h3 {
+        font-size: 24px;
+    }
+    
+}
