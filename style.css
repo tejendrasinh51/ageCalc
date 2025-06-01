@@ -9,6 +9,7 @@ html,body {
    width: 100%;
 }
 
+
 html, body {
     height: 100%;
     margin: 0;                
@@ -16,6 +17,7 @@ html, body {
     align-items: center;
     justify-content: center;  
     background: linear-gradient(45deg, black, rgb(95, 95, 95));
+    animation: gradient 1s ease infinite;
   }
 
 .container {
@@ -29,7 +31,21 @@ html, body {
     background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 5px 5px 10px;
-    background: linear-gradient(45deg, rgb(255, 255, 255), rgb(44, 45, 45));
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .container:hover{
@@ -46,7 +62,7 @@ h1 {
 
 #labeldob {
     font-size: 30px;
-    color: #555;
+    color: #252525;
 }
 
 #ageForm {
