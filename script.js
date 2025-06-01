@@ -3,7 +3,7 @@ const dob = document.getElementById('birthdate');
 const resultele = document.getElementById('result');
 
 form.addEventListener('submit', function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const birthdayStr = dob.value;
     if (!birthdayStr) {
@@ -12,17 +12,48 @@ form.addEventListener('submit', function (event) {
     }
 
     const birthday = new Date(birthdayStr);
-    const today = new Date();
+    const now = new Date();
 
-    let age = today.getFullYear() - birthday.getFullYear();
-
-    const hasBirthdayPassedThisYear =
-        today.getMonth() > birthday.getMonth() ||
-        (today.getMonth() === birthday.getMonth() && today.getDate() >= birthday.getDate());
-
-    if (!hasBirthdayPassedThisYear) {
-        age--;
+    if (birthday > now) {
+        resultele.innerHTML = "<h3>Birthdate can't be in the future!</h3>";
+        return;
     }
 
-    resultele.innerHTML = `<h3>Your age is ${age}</h3>`;
+    let diffMs = now - birthday;
+
+    const msInMinute = 60 * 1000;
+    const msInHour = msInMinute * 60;
+    const msInDay = msInHour * 24;
+
+    let years = now.getFullYear() - birthday.getFullYear();
+    let months = now.getMonth() - birthday.getMonth();
+    let days = now.getDate() - birthday.getDate();
+    let hours = now.getHours() - birthday.getHours();
+    let minutes = now.getMinutes() - birthday.getMinutes();
+
+    if (minutes < 0) {
+        minutes += 60;
+        hours--;
+    }
+
+    if (hours < 0) {
+        hours += 24;
+        days--;
+    }
+
+    if (days < 0) {
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        days += prevMonth;
+        months--;
+    }
+
+    if (months < 0) {
+        months += 12;
+        years--;
+    }
+
+    resultele.innerHTML = `
+        <h3>Your age is:</h3>
+        <p>${years} years, ${months} months, ${days} days, ${hours} hours, and ${minutes} minutes</p>
+    `;
 });
